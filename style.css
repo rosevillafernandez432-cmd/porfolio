@@ -1,5 +1,3 @@
-
-/* GENERAL STYLING */
 * {
     margin: 0;
     padding: 0;
@@ -7,16 +5,20 @@
     scroll-behavior: smooth;
 }
 
+html {
+    scroll-padding-top: 75px;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #fdf4ff;
     color: #333333;
-    line-height: 1.7;
+    line-height: 1.6;
 }
 
 /* HEADER */
 header {
-    background: linear-gradient(135deg, #8e44ad, #e056a0);
+    background: linear-gradient(135deg, #8e44ad, #e056a 0);
     color: white;
     text-align: center;
     padding: 50px 20px;
@@ -50,7 +52,8 @@ nav a {
     margin: 0 15px;
     font-weight: bold;
     display: inline-block;
-    transition: 0.3s;
+    transition: color 0.3s, transform 0.3s;
+    grid: auto;
 }
 
 nav a:hover {
@@ -61,11 +64,13 @@ nav a:hover {
 /* SECTIONS */
 section {
     max-width: 1000px;
+    width: calc(100% - 40px);
     margin: 30px auto;
     padding: 30px;
     background-color: white;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(108, 52, 131, 0.12);
+    scroll-margin-top: 80px;
 }
 
 section h2 {
@@ -75,6 +80,25 @@ section h2 {
     margin-bottom: 25px;
     border-bottom: 3px solid #e8a6d7;
     padding-bottom: 10px;
+}
+
+/* PROFILE IMAGE */
+.img {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.img img {
+    width: 180px;
+    height: 180px;
+    max-width: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    border: 5px solid #e8a6d7;
+    padding: 5px;
+    background-color: white;
+    display: inline-block;
 }
 
 /* PROFILE */
@@ -89,6 +113,7 @@ section h2 {
     color: #8e44ad;
     font-size: 24px;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .profile p {
@@ -102,8 +127,7 @@ section h2 {
 /* PARAGRAPHS */
 section p {
     text-align: justify;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin: 15px 0;
 }
 
 /* TABLES */
@@ -112,7 +136,7 @@ table {
     border-collapse: collapse;
     margin: 20px 0;
     background-color: white;
-    overflow-wrap: anywhere;
+    table-layout: auto;
 }
 
 th,
@@ -120,6 +144,7 @@ td {
     border: 1px solid #e5c5ed;
     padding: 14px;
     text-align: left;
+    overflow-wrap: anywhere;
 }
 
 th {
@@ -133,10 +158,10 @@ tr:nth-child(even) td {
 
 tr:hover td {
     background-color: #f5ddfa;
-    transition: 0.3s;
+    transition: background-color 0.3s;
 }
 
-/* FAMILY CONTENT BOX */
+/* CONTENT BOX */
 .content-box {
     background-color: #fff0f7;
     border-left: 5px solid #e056a0;
@@ -160,8 +185,86 @@ footer {
 }
 
 footer p {
-    margin: 0;
+    margin: 5px 0;
     text-align: center;
+}
+/* SOCIAL MEDIA ICONS */
+footer h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin: 20px 0;
+}
+
+.social-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: white;
+    color: #6c3483;
+    font-size: 23px;
+    text-decoration: none;
+    transition: transform 0.3s ease,
+                background-color 0.3s ease,
+                color 0.3s ease;
+}
+
+/* Individual icon colors on hover */
+.social-icons .tiktok:hover {
+    background-color: #000000;
+    color: #ffffff;
+    transform: translateY(-5px);
+}
+
+.social-icons .twitter:hover {
+    background-color: #000000;
+    color: #ffffff;
+    transform: translateY(-5px);
+}
+
+.social-icons .facebook:hover {
+    background-color: #1877f2;
+    color: #ffffff;
+    transform: translateY(-5px);
+}
+
+.social-icons .messenger:hover {
+    background-color: #0084ff;
+    color: #ffffff;
+    transform: translateY(-5px);
+}
+/* RESPONSIVE DESIGN FOR TABLETS */
+@media screen and (max-width: 768px) {
+    header {
+        padding: 40px 20px;
+    }
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    nav {
+        text-align: center;
+        padding: 12px 5px;
+    }
+
+    nav a {
+        margin: 5px 10px;
+    }
+
+    section {
+        padding: 25px;
+    }
 }
 
 /* RESPONSIVE DESIGN FOR MOBILE PHONES */
@@ -171,7 +274,8 @@ footer p {
     }
 
     header h1 {
-        font-size: 26px;
+        font-size: 25px;
+        letter-spacing: 1px;
     }
 
     header p {
@@ -183,21 +287,36 @@ footer p {
     }
 
     nav a {
-        margin: 5px 8px;
-        font-size: 14px;
+        margin: 5px 7px;
+        font-size: 13px;
     }
 
     section {
-        margin: 15px 10px;
+        width: calc(100% - 20px);
+        margin: 15px auto;
         padding: 20px 15px;
+        border-radius: 12px;
     }
 
     section h2 {
         font-size: 23px;
     }
 
+    .profile {
+        padding: 18px;
+    }
+
     .profile h3 {
         font-size: 21px;
+    }
+
+    .img img {
+        width: 150px;
+        height: 150px;
+    }
+
+    section p {
+        font-size: 14px;
     }
 
     th,
@@ -208,5 +327,14 @@ footer p {
 
     .content-box {
         padding: 18px;
+    }
+
+    .content-box h3 {
+        font-size: 20px;
+    }
+
+    footer {
+        padding: 20px 10px;
+        font-size: 14px;
     }
 }
